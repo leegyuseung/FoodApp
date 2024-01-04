@@ -17,6 +17,8 @@ function CategoriesScreen() {
       data={CATEGORIES}
       keyExtractor={(item) => item.id}
       renderItem={renderCategoryItem}
+      // columns를 두줄로 변경
+      numColumns={2}
     />
   );
 }
