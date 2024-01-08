@@ -1,15 +1,21 @@
-import { StyleSheet, FlatList, View, Text } from "react-native";
+import { useLayoutEffect } from "react";
+import { StyleSheet, FlatList, View } from "react-native";
 
-import { MEALS } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
 
 // screen으로 등록된 화면은 route props 사용
-function MealsOverviewScreen({ route }) {
+function MealsOverviewScreen({ route, navigation }) {
   const catId = route.params.categoryId;
 
   const displayedMeals = MEALS.filter((mealItem) => {
     return mealItem.categoryIds.indexOf(catId) >= 0;
   });
+
+  // useLayoutEffect(() => {
+  //   const categoryTitle = CATEGORIES.find((category) => category.id === catId);
+  //   navigation.setOptions({ title: categoryTitle });
+  // }, [catId, navigation]);
 
   function renderMealItem(itemData) {
     const item = itemData.item;
